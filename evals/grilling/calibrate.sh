@@ -8,7 +8,8 @@
 #   OLD_REF  git ref holding the baseline SKILL.md (default: upstream/main)
 #   RUNS     runs per case (default: 3)
 #   MODEL    claude-code model alias (default: sonnet)
-# Env: BUILD_ONLY=1 builds /tmp/ase and validates the suites without running.
+# Env: EVALS=<file in evals/grilling> picks the suite (default evals.json);
+#      BUILD_ONLY=1 builds /tmp/ase-<suite> and validates without running.
 set -euo pipefail
 
 old_ref="${1:-upstream/main}"
@@ -17,7 +18,8 @@ model="${3:-sonnet}"
 repo="$(git rev-parse --show-toplevel)"
 skill_path="skills/productivity/grilling/SKILL.md"
 evals_src="$repo/evals/grilling"
-base=/tmp/ase
+evals_file="${EVALS:-evals.json}"
+base="/tmp/ase-${evals_file%.json}"
 
 rm -rf "$base"
 for tag in old new; do
@@ -31,13 +33,14 @@ for tag in old new; do
   sed -i "0,/^name: grilling\$/s//name: $name/" "$base/$tag/skill/$name/SKILL.md"
   grep -q "^name: $name\$" "$base/$tag/skill/$name/SKILL.md"
   cp -r "$evals_src/files" "$base/$tag/evals/files"
-  python3 - "$evals_src/evals.json" "$base/$tag/evals/evals.json" "$name" <<'EOF'
+  python3 - "$evals_src/$evals_file" "$base/$tag/evals/evals.json" "$name" <<'EOF'
 import json, sys
 src, dst, name = sys.argv[1:]
 suite = json.load(open(src))
 suite["skill_name"] = name
 for case in suite["evals"]:
-    case["prompt"] = case["prompt"].replace("the grilling skill", f"the {name} skill", 1)
+    prompt = case["prompt"].replace("the grilling skill", f"the {name} skill", 1)
+    case["prompt"] = prompt.replace('"grilling"', f'"{name}"')
 json.dump(suite, open(dst, "w"), indent=2)
 EOF
   ase validate "$base/$tag/evals/evals.json" | sed -n 1p

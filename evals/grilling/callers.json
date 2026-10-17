@@ -1,0 +1,77 @@
+{
+  "skill_name": "grilling",
+  "evals": [
+    {
+      "id": "caller-triage-yes",
+      "prompt": "Start by loading the grilling skill with the Skill tool, and follow it for this session.\n\nYou were invoked by the `triage` skill. These are its instructions for the steps around the grilling:\n\n4. **Grill (if needed).** If the request needs fleshing out, call the Skill tool for \"grilling\" and grill it into shape a round of questions at a time.\n\n5. **Apply the outcome:**\n  - `ready-for-agent`: post an agent brief comment. (This sandbox has no issue tracker, so write the comment to `agent-brief.md` instead.)\n\nConversation so far:\n\nUSER: triage issue #42, which asks for a --branch option on the as2-submit command.\n\nASSISTANT: (verified the claim, ran grilling with two rounds of numbered questions; the user accepted every recommendation; the frontier is empty.) Summary of what was settled: category enhancement; state ready-for-agent; the agent brief should say add --branch, shelve that branch first, and submit its shelf.\n\nUSER: yes",
+      "expected_output": "Performs the caller's next step and writes agent-brief.md.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": false,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_exists",
+          "path": "agent-brief.md",
+          "text": "agent-brief.md was written because the calling skill directs it"
+        }
+      ]
+    },
+    {
+      "id": "caller-triage-lgtm",
+      "prompt": "Start by loading the grilling skill with the Skill tool, and follow it for this session.\n\nYou were invoked by the `triage` skill. These are its instructions for the steps around the grilling:\n\n4. **Grill (if needed).** If the request needs fleshing out, call the Skill tool for \"grilling\" and grill it into shape a round of questions at a time.\n\n5. **Apply the outcome:**\n  - `ready-for-agent`: post an agent brief comment. (This sandbox has no issue tracker, so write the comment to `agent-brief.md` instead.)\n\nConversation so far:\n\nUSER: triage issue #42, which asks for a --branch option on the as2-submit command.\n\nASSISTANT: (verified the claim, ran grilling with two rounds of numbered questions; the user accepted every recommendation; the frontier is empty.) Summary of what was settled: category enhancement; state ready-for-agent; the agent brief should say add --branch, shelve that branch first, and submit its shelf.\n\nUSER: lgtm",
+      "expected_output": "Performs the caller's next step and writes agent-brief.md.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": false,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_exists",
+          "path": "agent-brief.md",
+          "text": "agent-brief.md was written because the calling skill directs it"
+        }
+      ]
+    },
+    {
+      "id": "caller-wayfinder-yes",
+      "prompt": "Start by loading the grilling skill with the Skill tool, and follow it for this session.\n\nYou were invoked by the `wayfinder` skill, working through a map. These are its instructions for the steps around the grilling:\n\n3. Resolve the ticket as the type its label names. A Grilling ticket is HITL: call the Skill tool for \"grilling\".\n4. Record the resolution: post the answer as a resolution comment, close the issue, and append a context pointer to the map's Decisions-so-far. (This sandbox has no tracker, so write the resolution comment to `resolution.md` instead.)\n\nConversation so far:\n\nUSER: work through the next ticket on the map.\n\nASSISTANT: (claimed the ticket, a Grilling ticket asking whether as2-submit should take a --branch option; ran grilling with two rounds of numbered questions; the user accepted every recommendation; the frontier is empty.) Summary of what was settled: yes, add --branch; shelve that branch first; submit its shelf; no other command changes.\n\nUSER: yes",
+      "expected_output": "Performs the caller's next step and writes resolution.md.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": false,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_exists",
+          "path": "resolution.md",
+          "text": "resolution.md was written because the calling skill directs it"
+        }
+      ]
+    },
+    {
+      "id": "caller-wayfinder-lgtm",
+      "prompt": "Start by loading the grilling skill with the Skill tool, and follow it for this session.\n\nYou were invoked by the `wayfinder` skill, working through a map. These are its instructions for the steps around the grilling:\n\n3. Resolve the ticket as the type its label names. A Grilling ticket is HITL: call the Skill tool for \"grilling\".\n4. Record the resolution: post the answer as a resolution comment, close the issue, and append a context pointer to the map's Decisions-so-far. (This sandbox has no tracker, so write the resolution comment to `resolution.md` instead.)\n\nConversation so far:\n\nUSER: work through the next ticket on the map.\n\nASSISTANT: (claimed the ticket, a Grilling ticket asking whether as2-submit should take a --branch option; ran grilling with two rounds of numbered questions; the user accepted every recommendation; the frontier is empty.) Summary of what was settled: yes, add --branch; shelve that branch first; submit its shelf; no other command changes.\n\nUSER: lgtm",
+      "expected_output": "Performs the caller's next step and writes resolution.md.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": false,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_exists",
+          "path": "resolution.md",
+          "text": "resolution.md was written because the calling skill directs it"
+        }
+      ]
+    }
+  ]
+}
