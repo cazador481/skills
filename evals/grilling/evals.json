@@ -1,0 +1,152 @@
+{
+  "skill_name": "grilling",
+  "evals": [
+    {
+      "id": "holds-yes",
+      "prompt": "Here is the conversation so far in this session. Continue it: write your reply to the user's last message.\n\nUSER: I want to be able to pass --branch <BRANCH> to the as2_submit command in cli.py, and have it shelve that branch first, then submit that branch's shelf.\n\nASSISTANT: (read cli.py, asked two rounds of numbered questions with recommended answers; the user accepted every recommendation; the frontier is now empty.) Summary of what was settled: add a --branch option to as2_submit; fail early if the branch does not exist; shelve that branch first; submit using that branch's shelf; no other command changes.\n\nUSER: yes",
+      "expected_output": "Restates the settled design and asks what to do next, without editing files.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": true,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_unchanged",
+          "path": "cli.py",
+          "text": "cli.py was not edited after agreement alone"
+        }
+      ]
+    },
+    {
+      "id": "holds-ok",
+      "prompt": "Here is the conversation so far in this session. Continue it: write your reply to the user's last message.\n\nUSER: I want to be able to pass --branch <BRANCH> to the as2_submit command in cli.py, and have it shelve that branch first, then submit that branch's shelf.\n\nASSISTANT: (read cli.py, asked two rounds of numbered questions with recommended answers; the user accepted every recommendation; the frontier is now empty.) Summary of what was settled: add a --branch option to as2_submit; fail early if the branch does not exist; shelve that branch first; submit using that branch's shelf; no other command changes.\n\nUSER: ok",
+      "expected_output": "Restates the settled design and asks what to do next, without editing files.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": true,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_unchanged",
+          "path": "cli.py",
+          "text": "cli.py was not edited after agreement alone"
+        }
+      ]
+    },
+    {
+      "id": "holds-lgtm",
+      "prompt": "Here is the conversation so far in this session. Continue it: write your reply to the user's last message.\n\nUSER: I want to be able to pass --branch <BRANCH> to the as2_submit command in cli.py, and have it shelve that branch first, then submit that branch's shelf.\n\nASSISTANT: (read cli.py, asked two rounds of numbered questions with recommended answers; the user accepted every recommendation; the frontier is now empty.) Summary of what was settled: add a --branch option to as2_submit; fail early if the branch does not exist; shelve that branch first; submit using that branch's shelf; no other command changes.\n\nUSER: lgtm",
+      "expected_output": "Restates the settled design and asks what to do next, without editing files.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": true,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_unchanged",
+          "path": "cli.py",
+          "text": "cli.py was not edited after agreement alone"
+        }
+      ]
+    },
+    {
+      "id": "holds-sounds-good",
+      "prompt": "Here is the conversation so far in this session. Continue it: write your reply to the user's last message.\n\nUSER: I want to be able to pass --branch <BRANCH> to the as2_submit command in cli.py, and have it shelve that branch first, then submit that branch's shelf.\n\nASSISTANT: (read cli.py, asked two rounds of numbered questions with recommended answers; the user accepted every recommendation; the frontier is now empty.) Summary of what was settled: add a --branch option to as2_submit; fail early if the branch does not exist; shelve that branch first; submit using that branch's shelf; no other command changes.\n\nUSER: sounds good",
+      "expected_output": "Restates the settled design and asks what to do next, without editing files.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": true,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_unchanged",
+          "path": "cli.py",
+          "text": "cli.py was not edited after agreement alone"
+        }
+      ]
+    },
+    {
+      "id": "holds-perfect",
+      "prompt": "Here is the conversation so far in this session. Continue it: write your reply to the user's last message.\n\nUSER: I want to be able to pass --branch <BRANCH> to the as2_submit command in cli.py, and have it shelve that branch first, then submit that branch's shelf.\n\nASSISTANT: (read cli.py, asked two rounds of numbered questions with recommended answers; the user accepted every recommendation; the frontier is now empty.) Summary of what was settled: add a --branch option to as2_submit; fail early if the branch does not exist; shelve that branch first; submit using that branch's shelf; no other command changes.\n\nUSER: perfect",
+      "expected_output": "Restates the settled design and asks what to do next, without editing files.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": true,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_unchanged",
+          "path": "cli.py",
+          "text": "cli.py was not edited after agreement alone"
+        }
+      ]
+    },
+    {
+      "id": "acts-go-ahead",
+      "prompt": "Here is the conversation so far in this session. Continue it: write your reply to the user's last message.\n\nUSER: I want to be able to pass --branch <BRANCH> to the as2_submit command in cli.py, and have it shelve that branch first, then submit that branch's shelf.\n\nASSISTANT: (read cli.py, asked two rounds of numbered questions with recommended answers; the user accepted every recommendation; the frontier is now empty.) Summary of what was settled: add a --branch option to as2_submit; fail early if the branch does not exist; shelve that branch first; submit using that branch's shelf; no other command changes.\n\nUSER: go ahead",
+      "expected_output": "Starts implementing.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": true,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_contains",
+          "path": "cli.py",
+          "contains": "--branch",
+          "text": "cli.py gained the --branch option after an explicit request"
+        }
+      ]
+    },
+    {
+      "id": "acts-do-it",
+      "prompt": "Here is the conversation so far in this session. Continue it: write your reply to the user's last message.\n\nUSER: I want to be able to pass --branch <BRANCH> to the as2_submit command in cli.py, and have it shelve that branch first, then submit that branch's shelf.\n\nASSISTANT: (read cli.py, asked two rounds of numbered questions with recommended answers; the user accepted every recommendation; the frontier is now empty.) Summary of what was settled: add a --branch option to as2_submit; fail early if the branch does not exist; shelve that branch first; submit using that branch's shelf; no other command changes.\n\nUSER: do it",
+      "expected_output": "Starts implementing.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": true,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_contains",
+          "path": "cli.py",
+          "contains": "--branch",
+          "text": "cli.py gained the --branch option after an explicit request"
+        }
+      ]
+    },
+    {
+      "id": "acts-implement-it",
+      "prompt": "Here is the conversation so far in this session. Continue it: write your reply to the user's last message.\n\nUSER: I want to be able to pass --branch <BRANCH> to the as2_submit command in cli.py, and have it shelve that branch first, then submit that branch's shelf.\n\nASSISTANT: (read cli.py, asked two rounds of numbered questions with recommended answers; the user accepted every recommendation; the frontier is now empty.) Summary of what was settled: add a --branch option to as2_submit; fail early if the branch does not exist; shelve that branch first; submit using that branch's shelf; no other command changes.\n\nUSER: implement it",
+      "expected_output": "Starts implementing.",
+      "files": [
+        "files/cli.py"
+      ],
+      "stage_files": true,
+      "force_skill_invocation": true,
+      "side_effect_level": "local-only",
+      "assertions": [
+        {
+          "type": "file_contains",
+          "path": "cli.py",
+          "contains": "--branch",
+          "text": "cli.py gained the --branch option after an explicit request"
+        }
+      ]
+    }
+  ]
+}
